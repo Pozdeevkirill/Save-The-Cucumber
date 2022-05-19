@@ -1030,7 +1030,7 @@ MonoBehaviour:
   SpawnDely: 3
   _SpawnDely: 0
   _spawn: 1
-  MaxKnifeCount: 5
+  MaxKnifeCount: 2
   speedKnife: 2.5
 --- !u!4 &1246523263
 Transform:
