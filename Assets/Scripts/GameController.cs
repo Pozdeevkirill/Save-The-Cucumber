@@ -52,8 +52,8 @@ public class GameController : MonoBehaviour
         {
             Score += 1;
             ScoreTxt.text = $"{Score}";
-            Destroy(collision.gameObject);
-            if(Score % 10 == 0)
+            Spawner.GetComponent<SpawnKnifeController>().Teleport(collision.gameObject);
+            if (Score % 10 == 0)
             {
                 save.Coin += 1;
                 sc.SaveGame(save);
@@ -65,7 +65,14 @@ public class GameController : MonoBehaviour
                     Spawner.GetComponent<SpawnKnifeController>()._SpawnDely -= 0.2f; //(3) //0.2 - 10 подходов 
 
                 if (Player.GetComponent<PlayerController>().speedRotation < 170)
-                    Player.GetComponent<PlayerController>().speedRotation += 6; //(110) // 10 - 6 подходов | 6 - 10 подходов
+                {
+                    //Player.GetComponent<PlayerController>()._speedRotation += 6; //(110) // 10 - 6 подходов | 6 - 10 подходов
+                    if(Player.GetComponent<PlayerController>().speedRotation < 0)
+                        Player.GetComponent<PlayerController>().speedRotation -= 6;
+                    else
+                        Player.GetComponent<PlayerController>().speedRotation += 6;
+                }
+                    
             }
         }
     }

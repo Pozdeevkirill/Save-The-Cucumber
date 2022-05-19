@@ -5,8 +5,16 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float speedRotation; // Скорость поворота
+    [HideInInspector]
+    public float _speedRotation;
     public GameObject Weel; // Объект, во круг которого будет вращаться игрок
     public GameObject GameControllerObj; // Контроллер игры
+
+
+    private void Start()
+    {
+        _speedRotation = speedRotation;
+    }
 
     // Update is called once per frame
     void Update()
@@ -16,24 +24,6 @@ public class PlayerController : MonoBehaviour
         {
             speedRotation *= -1;
         }
-    }
-    void Rotation()
-    {
-        gameObject.transform.RotateAround(Weel.transform.localPosition, Vector3.back, Time.deltaTime * speedRotation);
-
-        //Телефоны
-        //if (Input.touchCount > 0)
-        //{
-        //    Touch touch = Input.GetTouch(0);
-        //    if (touch.phase == TouchPhase.Began)
-        //    {
-        //        speedRotation *= -1;
-        //    }
-        //}
-
-        //Тест на пк
-        
-          
     }
 
     private void OnTriggerEnter2D(Collider2D other)
