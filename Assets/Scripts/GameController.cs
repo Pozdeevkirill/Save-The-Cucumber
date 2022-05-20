@@ -18,6 +18,8 @@ public class GameController : MonoBehaviour
     public GameObject EndPanel;
     public Text NewRecordText;
 
+    public GameObject Partickle;
+
     public int Score = 0; // Текущий счет
     public int ScoreRecord; // Рекордный счет
 
@@ -94,6 +96,7 @@ public class GameController : MonoBehaviour
         NewRecordText.gameObject.SetActive(true);
         ScoreRecord = Score;
         save.Record = ScoreRecord;
+        Partickle.SetActive(true);
         sc.SaveGame(save);
     }
 }
